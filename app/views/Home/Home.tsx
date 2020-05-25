@@ -22,8 +22,8 @@ export class Home extends Component {
                         <Text style={styles.subtitleText}>Find your perfect pawtner</Text>
                     </View>
                     <View style={styles.bottomButtons}>
-                        <Button title="Log in" />
-                        <Button title="Sign up" />
+                        <Button title="Log in" onPress={() => { this.props.navigation.navigate('Login') }} />
+                        <Button title="Sign up" onPress={() => { this.props.navigation.navigate('Signup') }} />
                     </View>
                 </View>
             </GlobalWrapper>

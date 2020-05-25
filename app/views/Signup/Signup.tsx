@@ -20,12 +20,17 @@ export class Signup extends Component<SignupProps, SignupState> {
         };
 
         this.openDatePicker = this.openDatePicker.bind(this);
+        this.nextPage = this.nextPage.bind(this);
     }
 
     openDatePicker() {
         console.log("here");
         Keyboard.dismiss();
         this.setState({ dateVisible: true });
+    }
+
+    nextPage() {
+        this.props.navigation.navigate("SignupPage2");
     }
 
     render() {
@@ -68,6 +73,7 @@ export class Signup extends Component<SignupProps, SignupState> {
                     <Button
                         title="Next"
                         containerStyle={styles.button}
+                        onPress={this.nextPage}
                     />
                 </View>
             </GlobalWrapper>

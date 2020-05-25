@@ -4,7 +4,11 @@ import title from './../assets/Woofr-Title-Blue.png';
 import { Button, Icon } from 'react-native-elements';
 import GlobalWrapper from './GlobalWrapper';
 
-export class NavBar extends Component {
+interface NavBarProps {
+    main?: boolean,
+}
+
+export class NavBar extends Component<NavBarProps> {
 
     constructor(props) {
         super(props);
@@ -15,18 +19,33 @@ export class NavBar extends Component {
             <GlobalWrapper>
                 <View style={styles.container}>
                     <View style={styles.backButtonContainer}>
-                        <Button
-                            icon={
-                                <Icon
-                                    name="angle-left"
-                                    type="font-awesome-5"
-                                    size={30}
-                                    color="#C4C4C4"
-                                />
-                            }
-                            type="clear"
-                            style={styles.backButton}
-                        />
+                        {this.props.main ?
+                            <Button
+                                icon={
+                                    <Icon
+                                        name="cog"
+                                        type="font-awesome-5"
+                                        size={30}
+                                        color="#2979FF"
+                                    />
+                                }
+                                type="clear"
+                                style={styles.button}
+                            />
+                            : <Button
+                                icon={
+                                    <Icon
+                                        name="angle-left"
+                                        type="font-awesome-5"
+                                        size={30}
+                                        color="#C4C4C4"
+                                    />
+                                }
+                                type="clear"
+                                style={styles.button}
+                                onPress={() => { this.props.navigation.goBack() }}
+                            />
+                        }
                     </View>
                     <View>
                         <Image
@@ -34,6 +53,24 @@ export class NavBar extends Component {
                             style={styles.image}
                         />
                     </View>
+                    {this.props.main ?
+                        <View style={styles.forwardButtonContainer}>
+                            <Button
+                                icon={
+                                    <Icon
+                                        name="heart"
+                                        type="font-awesome-5"
+                                        size={30}
+                                        solid
+                                        color="#D2302C"
+                                    />
+                                }
+                                type="clear"
+                                style={styles.button}
+
+                            />
+                        </View> : <></>
+                    }
                 </View>
             </GlobalWrapper>
         )
@@ -54,13 +91,17 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         resizeMode: 'center',
     },
-    backButton: {
+    button: {
         marginBottom: 5,
     },
     backButtonContainer: {
         position: 'absolute',
         left: 20,
     },
+    forwardButtonContainer: {
+        position: 'absolute',
+        right: 20,
+    }
 })
 
 export default NavBar

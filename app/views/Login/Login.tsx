@@ -7,6 +7,12 @@ import logo from './../../assets/Woofr-Logo.png';
 export class Login extends Component {
     constructor(props) {
         super(props);
+
+        this.login = this.login.bind(this);
+    }
+
+    login() {
+        this.props.navigation.navigate('MainApp');
     }
 
     render() {
@@ -39,6 +45,7 @@ export class Login extends Component {
                     <Button
                         style={styles.button}
                         title="Log in"
+                        onPress={() => { this.login() }}
                     />
                 </View>
             </GlobalWrapper>
@@ -60,8 +67,8 @@ const styles = StyleSheet.create({
         marginVertical: 15,
     },
     button: {
-        position: 'absolute',
-        bottom: 20,
+        /* position: 'absolute',
+        bottom: 20, */
     },
     signupButton: {
         paddingLeft: 10,

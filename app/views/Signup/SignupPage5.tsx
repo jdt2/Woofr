@@ -13,6 +13,12 @@ export class SignupPage5 extends Component<SignupProps, SignupState> {
 
     constructor(props) {
         super(props);
+
+        this.nextPage = this.nextPage.bind(this);
+    }
+
+    nextPage() {
+        this.props.navigation.navigate('MainApp');
     }
 
     render() {
@@ -38,6 +44,7 @@ export class SignupPage5 extends Component<SignupProps, SignupState> {
                     <Button
                         title="Accept"
                         containerStyle={styles.button}
+                        onPress={this.nextPage}
                     />
                 </View>
             </GlobalWrapper >

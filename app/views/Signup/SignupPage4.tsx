@@ -29,12 +29,17 @@ export class SignupPage4 extends Component<SignupProps, SignupState> {
         this.setState({ checked });
 
         this.checkPreference = this.checkPreference.bind(this);
+        this.nextPage = this.nextPage.bind(this);
     }
 
     checkPreference(index: number) {
         let checked = this.state.checked;
         checked[index] = !checked[index];
         this.setState({ checked });
+    }
+
+    nextPage() {
+        this.props.navigation.navigate('SignupPage5');
     }
 
     render() {
@@ -68,6 +73,7 @@ export class SignupPage4 extends Component<SignupProps, SignupState> {
                     <Button
                         title="Next"
                         containerStyle={styles.button}
+                        onPress={this.nextPage}
                     />
                 </View>
             </GlobalWrapper >

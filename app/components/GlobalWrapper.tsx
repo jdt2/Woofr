@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import { Text, View, Keyboard, TouchableWithoutFeedback } from 'react-native'
 import { ThemeProvider } from 'react-native-elements';
-import { homeTheme, formTheme } from './themes';
+import { homeTheme, formTheme, mainAppTheme, profileTheme, messagesTheme } from './themes';
 import { LinearGradient } from 'expo-linear-gradient';
 
 interface WrapperProps {
     form?: Boolean,
     home?: Boolean,
     navbar?: Boolean,
+    mainApp?: Boolean,
+    profile?: Boolean,
+    messages?: Boolean,
 }
 
 export class GlobalWrapper extends Component<WrapperProps> {
@@ -21,6 +24,12 @@ export class GlobalWrapper extends Component<WrapperProps> {
             currTheme = formTheme;
         } else if (this.props.home) {
             currTheme = homeTheme;
+        } else if (this.props.mainApp) {
+            currTheme = mainAppTheme;
+        } else if (this.props.profile) {
+            currTheme = profileTheme;
+        } else if (this.props.messages) {
+            currTheme = messagesTheme;
         }
 
         return (

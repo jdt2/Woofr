@@ -20,6 +20,12 @@ export class SignupPage3 extends Component<SignupProps, SignupState> {
             selectedAgeIndex: 3,
             selectedSizeIndex: 3,
         };
+
+        this.nextPage = this.nextPage.bind(this);
+    }
+
+    nextPage() {
+        this.props.navigation.navigate('SignupPage4');
     }
 
     render() {
@@ -57,6 +63,7 @@ export class SignupPage3 extends Component<SignupProps, SignupState> {
                     <Button
                         title="Next"
                         containerStyle={styles.button}
+                        onPress={this.nextPage}
                     />
                 </View>
             </GlobalWrapper>

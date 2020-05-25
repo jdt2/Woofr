@@ -95,3 +95,52 @@ export const homeTheme = {
         }
     }
 };
+
+export const mainAppTheme = {
+    Icon: {
+        containerStyle: {
+        }
+    },
+    Card: {
+        imageStyle: {
+            height: 400,
+        },
+        containerStyle: {
+            borderWidth: 0,
+            marginTop: -50,
+            paddingTop: -20,
+        }
+    },
+    Text: {
+        style: regularText,
+    }
+}
+
+export const profileTheme = {
+    Text: {
+        style: {
+            ...regularText,
+            color: 'black',
+            textAlign: 'center',
+        },
+        h1Style: {
+            ...headingText,
+            color: 'black',
+            textAlign: 'center',
+        }
+    },
+}
+export const messagesTheme = {
+    Text: {
+        style: {
+            ...regularText,
+            color: 'black',
+            textAlign: 'center',
+        },
+        h1Style: {
+            ...headingText,
+            color: 'black',
+            textAlign: 'center',
+        }
+    },
+}

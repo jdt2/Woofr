@@ -4,7 +4,9 @@ import GlobalWrapper from '../../components/GlobalWrapper'
 import { Input, Button, Text } from 'react-native-elements'
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
-interface SignupProps { }
+interface SignupProps {
+    navigation: any,
+}
 
 interface SignupState {
     looking: boolean,
@@ -20,6 +22,12 @@ export class SignupPage2 extends Component<SignupProps, SignupState> {
             looking: false,
             giving: false
         };
+
+        this.nextPage = this.nextPage.bind(this);
+    }
+
+    nextPage() {
+        this.props.navigation.navigate("SignupPage3");
     }
 
     render() {
@@ -45,6 +53,7 @@ export class SignupPage2 extends Component<SignupProps, SignupState> {
                     <Button
                         title="Next"
                         containerStyle={styles.button}
+                        onPress={this.nextPage}
                         disabled={!this.state.looking && !this.state.giving}
                     />
                 </View>
@@ -74,6 +83,7 @@ const styles = StyleSheet.create({
     question: {
         paddingLeft: 10,
         fontSize: 24,
+        color: '#0A5FCA',
     },
     questionTitle: {
         fontFamily: 'ProximaNova-Regular',
