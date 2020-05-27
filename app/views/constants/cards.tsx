@@ -27,7 +27,7 @@ export const cards = [
         image: require('./../../assets/stock-photos/cute-dog.jpg'),
         name: 'X AE A-12',
         age: 'Adult',
-        type: 'Golden Retriever',
+        type: 'N/A',
         distance: '7 mi',
         location: 'Atlanta, GA'
     },
@@ -35,7 +35,7 @@ export const cards = [
         image: require('./../../assets/stock-photos/grey-dog.jpg'),
         name: 'Falcon',
         age: 'Young',
-        type: 'Greyhound',
+        type: 'Weimaraner',
         distance: '8 mi',
         location: 'Atlanta, GA'
     },
@@ -43,7 +43,7 @@ export const cards = [
         image: require('./../../assets/stock-photos/pug.jpg'),
         name: 'Glen',
         age: 'Adult',
-        type: 'Bulldog',
+        type: 'Pug',
         distance: '20 mi',
         location: 'Alpharetta, GA'
     },
@@ -51,7 +51,7 @@ export const cards = [
         image: require('./../../assets/stock-photos/happy-dog.jpg'),
         name: 'Apollo',
         age: 'Young',
-        type: 'Pug',
+        type: 'N/A',
         distance: '25 mi',
         location: 'Alpharetta, GA'
     }
