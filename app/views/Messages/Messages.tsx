@@ -30,19 +30,19 @@ export class Messages extends Component<MessagesProps, MessagesState> {
 
         const messages = [
             {
-                name: 'Seller Name/Organization',
-                text: 'Hey let\'s talk over the phone about something osmethign somethig',
-                image: { uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg', }
+                name: 'Noah Longhi',
+                text: 'Hey let\'s meet up sometime about the exchange',
+                image: require('../../assets/stock-photos/asian-neon-boi.jpg')
             },
             {
-                name: 'Seller Name/Organization',
-                text: 'Hey let\'s talk over the phone about something osmethign somethig',
-                image: { uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg', }
+                name: 'Madeline Parker',
+                text: 'Sure, sounds good!',
+                image: require('../../assets/stock-photos/girl.jpg')
             },
             {
-                name: 'Seller Name/Organization',
-                text: 'Hey let\'s talk over the phone about something osmethign somethig',
-                image: { uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg', }
+                name: 'Stephanio Luo',
+                text: 'When are you available?',
+                image: require('../../assets/stock-photos/smiling-boi.jpg')
             }
         ];
 

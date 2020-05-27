@@ -27,7 +27,9 @@ export class SignupPage2 extends Component<SignupProps, SignupState> {
     }
 
     nextPage() {
-        this.props.navigation.navigate("SignupPage3");
+        let currUser = this.props.route.params.currUser;
+        currUser["looking"] = this.state.looking;
+        this.props.navigation.navigate("SignupPage3", { currUser });
     }
 
     render() {

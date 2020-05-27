@@ -13,6 +13,9 @@ interface SignupState {
 
 export class SignupPage3 extends Component<SignupProps, SignupState> {
 
+    sizeButtons: any;
+    ageButtons: any;
+
     constructor(props) {
         super(props);
 
@@ -20,17 +23,21 @@ export class SignupPage3 extends Component<SignupProps, SignupState> {
             selectedAgeIndex: 3,
             selectedSizeIndex: 3,
         };
+        this.sizeButtons = ['Small', 'Medium', 'Large', 'N/A'];
+        this.ageButtons = ['Young', 'Adult', 'Senior', 'N/A'];
 
         this.nextPage = this.nextPage.bind(this);
     }
 
     nextPage() {
-        this.props.navigation.navigate('SignupPage4');
+        let currUser = this.props.route.params.currUser;
+        currUser.sizePrefer = this.sizeButtons[this.state.selectedSizeIndex];
+        currUser.agePrefer = this.ageButtons[this.state.selectedAgeIndex];
+        this.props.navigation.navigate('SignupPage4', { currUser });
     }
 
     render() {
-        const sizeButtons = ['Small', 'Medium', 'Large', 'N/A'];
-        const ageButtons = ['Young', 'Adult', 'Senior', 'N/A'];
+        const { sizeButtons, ageButtons } = this;
 
         return (
             <GlobalWrapper form>

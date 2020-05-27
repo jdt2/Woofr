@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, YellowBox } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -20,6 +20,10 @@ import { Profile } from './app/views/Profile/Profile';
 import { Messages } from './app/views/Messages/Messages';
 import TabBar from './app/components/TabBar';
 
+YellowBox.ignoreWarnings([
+  'Non-serializable values were found in the navigation state',
+]);
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -32,21 +36,6 @@ function MainApp() {
     </Tab.Navigator>
   );
 }
-
-fetch('http://192.168.0.102:3000/user/add', {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    id: 'user002',
-    first_name: 'Jesse',
-    last_name: 'Du',
-    email: 'jessejesse10@gmail.com',
-    phone: '434-434-4343'
-  })
-});
 
 export default function App() {
   let [currRoute, setRoute] = useState('');

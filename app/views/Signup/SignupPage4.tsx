@@ -18,37 +18,68 @@ export class SignupPage4 extends Component<SignupProps, SignupState> {
 
         this.state = {
             checked: [],
-            preferences: ['No preference', 'Bulldog', 'Chihuahau', 'Corgi', 'Poodle', 'Golden Retriever', 'Something else', 'Something else', 'Other']
+            preferences: ['No preference', 'Bulldog', 'Chihuahau', 'Corgi',
+                'Poodle', 'Golden Retriever', 'Labrador Retriever', 'Great Dane', 'Greyhound', 'German Shepard', 'Other']
         };
 
+        this.checkPreference = this.checkPreference.bind(this);
+        this.nextPage = this.nextPage.bind(this);
+    }
+
+    componentDidMount() {
         let checked = this.state.checked;
         checked.push(true);
         for (let i = 1; i < this.state.preferences.length; i++) {
             checked.push(false);
         }
         this.setState({ checked });
-
-        this.checkPreference = this.checkPreference.bind(this);
-        this.nextPage = this.nextPage.bind(this);
     }
 
     checkPreference(index: number) {
         let checked = this.state.checked;
         checked[index] = !checked[index];
+        if (index === 0) {
+            if (checked[index]) {
+                for (let i = 1; i < checked.length; i++) {
+                    checked[i] = false;
+                }
+            }
+        } else {
+            if (checked[index]) {
+                checked[0] = false;
+            }
+        }
         this.setState({ checked });
     }
 
     nextPage() {
-        this.props.navigation.navigate('SignupPage5');
+        let currUser = this.props.route.params.currUser;
+        // compile preferences
+        let preferences = [];
+        for (let i = 0; i < this.state.checked.length; i++) {
+            if (this.state.checked[i]) {
+                preferences.push(this.state.preferences[i]);
+            }
+        }
+        currUser.preferences = preferences;
+        this.props.navigation.navigate('SignupPage5', { currUser });
     }
 
     render() {
         const checkboxes = [];
+        // check if any other checkboxes are checked for no preference
+        let noPrefChecked = true;
+        for (let i = 1; i < this.state.checked.length; i++) {
+            if (this.state.checked[i]) {
+                noPrefChecked = false;
+                break;
+            }
+        }
         for (let i = 0; i < this.state.preferences.length; i++) {
             checkboxes.push(
                 <CheckBox
                     title={"| " + this.state.preferences[i]}
-                    checked={this.state.checked[i]}
+                    checked={i === 0 ? noPrefChecked : this.state.checked[i]}
                     key={i}
                     onPress={() => this.checkPreference(i)}
                 />

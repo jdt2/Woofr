@@ -4,62 +4,12 @@ import { Card, Button, Icon, Image } from 'react-native-elements'
 import Swiper from 'react-native-deck-swiper';
 import GermanShepard from './../../assets/GermanShepherd.jpg';
 import GlobalWrapper from '../../components/GlobalWrapper';
+import { cards } from '../constants/cards';
 
 interface MainProps { };
 interface MainState {
     index: number,
 };
-
-const cards = [
-    {
-        image: require('./../../assets/GermanShepherd.jpg'),
-        name: 'Rocket',
-        age: 'Adult',
-        type: 'Border Collie',
-        distance: '13 mi',
-        location: 'Alpharetta, GA'
-    },
-    {
-        image: require('./../../assets/Pembroke-Welsh-Corgi.jpg'),
-        name: 'Rocket',
-        age: 'Adult',
-        type: 'Border Collie',
-        distance: '13 mi',
-        location: 'Alpharetta, GA'
-    },
-    {
-        image: require('./../../assets/Pembroke-Welsh-Corgi.jpg'),
-        name: 'Rocket',
-        age: 'Adult',
-        type: 'Border Collie',
-        distance: '13 mi',
-        location: 'Alpharetta, GA'
-    },
-    {
-        image: require('./../../assets/Pembroke-Welsh-Corgi.jpg'),
-        name: 'Rocket',
-        age: 'Adult',
-        type: 'Border Collie',
-        distance: '13 mi',
-        location: 'Alpharetta, GA'
-    },
-    {
-        image: require('./../../assets/Pembroke-Welsh-Corgi.jpg'),
-        name: 'Rocket',
-        age: 'Adult',
-        type: 'Border Collie',
-        distance: '13 mi',
-        location: 'Alpharetta, GA'
-    },
-    {
-        image: require('./../../assets/Pembroke-Welsh-Corgi.jpg'),
-        name: 'Rocket',
-        age: 'Adult',
-        type: 'Border Collie',
-        distance: '13 mi',
-        location: 'Alpharetta, GA'
-    }
-]
 
 export class Main extends Component<MainProps, MainState> {
 
@@ -232,8 +182,8 @@ const styles = StyleSheet.create({
     },
     leftDesc: {
         flex: 1,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
+        /* flexDirection: 'row',
+        flexWrap: 'wrap', */
     },
     rightDesc: {
         flex: 1,

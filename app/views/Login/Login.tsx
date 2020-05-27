@@ -9,6 +9,23 @@ export class Login extends Component {
         super(props);
 
         this.login = this.login.bind(this);
+
+
+        /* fetch('http://192.168.0.102:3000/user/auth', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: 'Ihrbrba',
+                password: 'something',
+            })
+        }).then(async (res) => {
+            console.log(await res.json());
+            console.log("done awaiting");
+        }); */
+
     }
 
     login() {
@@ -41,6 +58,7 @@ export class Login extends Component {
                         buttonStyle={styles.signupButton}
                         containerStyle={styles.signupContainer}
                         titleStyle={styles.signupText}
+                        onPress={() => { this.props.navigation.navigate('SignUp') }}
                     />
                     <Button
                         style={styles.button}

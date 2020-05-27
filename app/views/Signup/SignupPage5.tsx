@@ -3,6 +3,7 @@ import { View, StyleSheet, Keyboard, TouchableWithoutFeedback, TouchableOpacity,
 import GlobalWrapper from '../../components/GlobalWrapper'
 import { Input, Button, Text, ButtonGroup, CheckBox, Divider } from 'react-native-elements'
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import { Base64 } from 'js-base64';
 
 interface SignupProps { }
 
@@ -14,10 +15,42 @@ export class SignupPage5 extends Component<SignupProps, SignupState> {
     constructor(props) {
         super(props);
 
+        console.log(this.props.route.params);
+
         this.nextPage = this.nextPage.bind(this);
     }
 
+    CreateUUID() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+
     nextPage() {
+        let uuid = this.CreateUUID();
+        console.log(uuid);
+        const { username, first_name, last_name, password, agePrefer, birthday, looking, preferences, sizePrefer } = this.props.route.params.currUser;
+
+        fetch('http://192.168.0.102:3000/user/add', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: uuid,
+                first_name,
+                last_name,
+                email: username,
+                password: Base64.encode(password),
+                agePrefer,
+                birthday: birthday.toString(),
+                looking,
+                preferences,
+                sizePrefer,
+            })
+        });
         this.props.navigation.navigate('MainApp');
     }
 

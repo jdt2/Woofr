@@ -11,10 +11,10 @@ export class Profile extends Component {
                     <Avatar
                         size={125}
                         rounded
-                        source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg', }}
+                        source={require('../../assets/stock-photos/glasses-boi.jpeg')}
                         showAccessory
                     />
-                    <Text h1>John Doe/Animal Shelter</Text>
+                    <Text h1>Jesse Du</Text>
                     <Text>Currently trying to find my buddy Rocket a new home</Text>
                     <View style={styles.dogTiles}>
                         <View style={[styles.dogTile, { justifyContent: 'center' }]}>
