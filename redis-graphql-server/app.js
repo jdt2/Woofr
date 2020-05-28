@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const redis = require('redis');
+const redisSearch = require('reds');
 
 // Create Redis Client
 let client = redis.createClient();
@@ -11,6 +12,8 @@ let client = redis.createClient();
 client.on('connect', function () {
     console.log('Connected to Redis...');
 });
+redisSearch.setClient(client);
+var userSearch = redisSearch.createSearch('myusersearch');
 
 // Set Port
 const port = 3000;
@@ -36,8 +39,28 @@ app.get('/', function (req, res, next) {
 
 // Search processing
 app.post('/user/search', function (req, res, next) {
-    let id = req.body.id;
-    client.hgetall(id, function (err, obj) {
+    let id = req.body.email;
+    client.scan('0', function (err, obj) {
+        console.log(obj);
+        let ids = obj[1];
+        // let's find the person
+        let i = 0;
+        for (var id of ids) {
+            client.hgetall(id, function (err, obj) {
+                if (obj) {
+                    userSearch.index(obj.email, obj);
+                }
+            })
+            i++;
+        }
+    });
+    userSearch.query(query = id, function (err, ids) {
+        res.render('details', {
+            user: ids
+        })
+    });
+    console.log("here");
+    /* client.hgetall(id, function (err, obj) {
         if (!obj) {
             res.render('searchusers', {
                 error: 'User does not exist'
@@ -48,7 +71,7 @@ app.post('/user/search', function (req, res, next) {
                 user: obj
             });
         }
-    });
+    }); */
 });
 
 app.post('/user/auth', function (req, res, next) {
